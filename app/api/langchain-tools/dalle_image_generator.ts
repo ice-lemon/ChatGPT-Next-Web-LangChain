@@ -66,7 +66,7 @@ async _call({ prompt, size, quality, style }: z.infer<typeof this.schema>) {
   let imageUrl;
   const baseURL = this.baseURL ?? ""; // 如果 this.baseURL 为 undefined，则使用空字符串
   let apiUrl = `${baseURL}/images/generations`;
-  const isAzure = baseURL.includes("azure.com");
+  const isAzure = baseURL.includes("azure");
 
   if (isAzure) {
     apiUrl = `${baseURL}/dall-e-3/images/generations?api-version=2024-02-01`;
