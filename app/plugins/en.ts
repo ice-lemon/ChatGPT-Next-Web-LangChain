@@ -2,6 +2,16 @@ import { BuiltinPlugin } from "./typing";
 
 export const EN_PLUGINS: BuiltinPlugin[] = [
   {
+    name: "Post2WordPressTool",
+    toolName: "post2wordpress",
+    lang: "en",
+    description:
+      "A tool to post articles to a WordPress site. It uses the WordPress REST API to create new posts.",
+    builtin: true,
+    createdAt: 1703846656000,
+    enable: true,
+    onlyNodeRuntime: false,
+  },{
     name: "WebSearch",
     toolName: "web-search",
     lang: "en",
