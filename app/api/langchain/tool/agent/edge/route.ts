@@ -4,6 +4,7 @@ import { auth } from "@/app/api/auth";
 import { EdgeTool } from "../../../../langchain-tools/edge_tools";
 import { ModelProvider } from "@/app/constant";
 import { OpenAI, OpenAIEmbeddings } from "@langchain/openai";
+import { Post2WordPressTool } from "@/app/api/langchain-tools/post2wordpress"; // Import the new tool
 
 async function handle(req: NextRequest) {
   if (req.method === "OPTIONS") {
@@ -65,7 +66,9 @@ async function handle(req: NextRequest) {
       dalleCallback,
     );
     var edgeTools = await edgeTool.getCustomTools();
-    var tools = [...edgeTools];
+    var post2WordPressTool = new Post2WordPressTool();
+
+    var tools = [...edgeTools,post2WordPressTool];
     return await agentApi.getApiHandler(req, reqBody, tools);
   } catch (e) {
     return new Response(JSON.stringify({ error: (e as any).message }), {
